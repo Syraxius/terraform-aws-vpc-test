@@ -14,6 +14,12 @@ AWS_REGION = "eu-west-1"
 AWS_USERID = "123456"
 ```
 
+The AWS_USERID can be found when logging in with the following command:
+`aws ecr get-login --region ap-southeast-1`
+
+Alternatively, you can find the AWS_USERID from the instance profile after building the infrastructure:
+`aws iam get-instance-profile --instance-profile app-ec2-role`
+
 ## Building the Infrastructure
 Execute the plan using terraform:
 ```
@@ -26,6 +32,7 @@ terraform apply  # to apply the changes
 ### Build and upload the container to ECR
 1. Go under the docker-php7-test folder
 2. Build the image with `docker build -t php7:latest`
+3. Login to Docker using `aws ecr get-login --region ap-southeast-1`
 3. Retag the image using `docker tag php7:latest AWS_USERID.dkr.ecr.ap-southeast-1.amazonaws.com/php7:latest`
 4. Push the image using `docker push AWS_USERID.dkr.ecr.ap-southeast-1.amazonaws.com/php7:latest`
 
