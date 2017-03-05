@@ -3,7 +3,7 @@ This is a modified version of the terraform demo used in Edward Viaene's Online 
 
 Edward Viaene's profile is at https://github.com/wardviaene/
 
-This version is modified to work in Singapore (ap-southeast-1) region.
+This version is heavily refactored for readability and is modified to work in Singapore (ap-southeast-1) region.
 
 ## Basic Configuration
 To use this example, you need to add a terraform.tfvars with the following content:
