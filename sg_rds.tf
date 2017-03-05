@@ -7,7 +7,7 @@ resource "aws_security_group" "rds-app-prod" {
     Name = "rds-app-prod"
   }
 }
-resource "aws_security_group_rule" "allow-outgoing" {
+resource "aws_security_group_rule" "allow-outgoing-rds" {
     type = "egress"
     from_port = 0
     to_port = 0

@@ -7,7 +7,7 @@ resource "aws_security_group" "app-prod" {
     Name = "app-prod"
   }
 }
-resource "aws_security_group_rule" "allow-outgoing" {
+resource "aws_security_group_rule" "allow-outgoing-app" {
     type = "egress"
     from_port = 0
     to_port = 0
