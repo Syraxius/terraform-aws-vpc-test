@@ -1,4 +1,4 @@
-# test instance that'll launch in the same vpc
+# Test instance that'll launch in the same vpc
 #resource "aws_instance" "test-instance" {
 #    ami = "ami-b0ac25c3"
 #    instance_type = "t2.micro"

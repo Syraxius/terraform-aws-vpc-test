@@ -1,28 +1,10 @@
-
-# key pair
+# Key pair
 resource "aws_key_pair" "app" {
-  key_name = "app-prod" 
+  key_name = "app-prod"
   public_key = "${file("${var.SSH_PUBLIC_KEY}")}"
 }
 
-# sec group
-resource "aws_security_group" "app-prod" {
-  vpc_id = "${aws_vpc.main.id}"
-  name = "app-prod"
-  description = "App prod security group"
-  egress {
-      from_port = 0
-      to_port = 0
-      protocol = "-1"
-      cidr_blocks = ["0.0.0.0/0"]
-  }
-  tags {
-    Name = "app-prod"
-  }
-}
-
-# app
-
+# Define the app as a Beanstalk application
 resource "aws_elastic_beanstalk_application" "app" {
   name = "app"
   description = "app"
@@ -31,7 +13,7 @@ resource "aws_elastic_beanstalk_environment" "app-prod" {
   name = "app-prod"
   application = "${aws_elastic_beanstalk_application.app.name}"
   solution_stack_name = "64bit Amazon Linux 2016.03 v2.1.2 running PHP 5.6"
-  cname_prefix = "app-prod-a2b6d0"
+  cname_prefix = "app-prod-abcd1234randomstringhere" #Needs to be unique throughout whole AWS
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
@@ -134,4 +116,3 @@ resource "aws_elastic_beanstalk_environment" "app-prod" {
     value = "${aws_db_instance.rds-app-prod.endpoint}"
   }
 }
-
