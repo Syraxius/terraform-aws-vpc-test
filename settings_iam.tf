@@ -1,4 +1,4 @@
-# IAM roles
+# Basic EC2 Role
 resource "aws_iam_role" "app-ec2-role" {
     name = "app-ec2-role"
     assume_role_policy = <<EOF
@@ -64,23 +64,22 @@ resource "aws_iam_policy_attachment" "app-attach4" {
     policy_arn = "arn:aws:iam::aws:policy/service-role/AWSElasticBeanstalkEnhancedHealth"
 }
 
-# ecr
-# uncomment for ecr
-#resource "aws_iam_role_policy" "app-ec2-role-policy" {
-#    name = "app-ec2-role-policy"
-#    role = "${aws_iam_role.app-ec2-role.id}"
-#    policy = <<EOF
-#{
-#    "Version": "2012-10-17",
-#    "Statement": [
-#        {
-#            "Effect": "Allow",
-#            "Action": [
-#                "ecr:GetAuthorizationToken"
-#            ],
-#            "Resource": "*"
-#        }
-#    ]
-#}
-#EOF
-#}
+# ECR Role
+resource "aws_iam_role_policy" "app-ec2-role-policy" {
+    name = "app-ec2-role-policy"
+    role = "${aws_iam_role.app-ec2-role.id}"
+    policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecr:GetAuthorizationToken"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+}

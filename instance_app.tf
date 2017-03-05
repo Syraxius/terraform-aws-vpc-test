@@ -10,10 +10,10 @@ resource "aws_elastic_beanstalk_application" "app" {
   description = "app"
 }
 resource "aws_elastic_beanstalk_environment" "app-prod" {
-  name = "app-prod"
+  name = "app-docker"
   application = "${aws_elastic_beanstalk_application.app.name}"
-  solution_stack_name = "64bit Amazon Linux 2016.09 v2.3.1 running PHP 5.6"
-  cname_prefix = "app-prod-abcd1234randomstringhere" #Needs to be unique throughout whole AWS
+  solution_stack_name = "64bit Amazon Linux 2016.09 v2.5.0 running Multi-container Docker 1.12.6 (Generic)"
+  cname_prefix = "app-docker-abcd1234randomstringhere" #Needs to be unique throughout whole AWS
   setting {
     namespace = "aws:ec2:vpc"
     name      = "VPCId"
