@@ -1,5 +1,7 @@
 # Terraform demo
-This is a terraform demo used in my Online Course (see www.newtech.academy).
+This is a terraform demo used in Edward Viaene's Online Course (see www.newtech.academy).
+
+Edward Viaene's profile is at https://github.com/wardviaene/
 
 ## Usage
 To use this example, you need to add a terraform.tfvars with the following content:
